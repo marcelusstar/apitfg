@@ -14,7 +14,18 @@ var Usuario=
 
   addUsuario:function(Usuario,callback)
   {
-    return db.query("Insert into usuarios values(?,?,?,?)",[Usuario.alias, Usuario.nombre, Usuario.apellidos, Usuario.contrasena],callback);
+    var sentencia = db.query("Insert into usuarios values(?,?,?,?)",[Usuario.alias, Usuario.nombre, Usuario.apellidos, Usuario.contrasena],callback);
+
+    var organizaciones = Usuario.organizaciones;
+
+    for(var i in organizaciones)
+    {
+         //var id_organizacion = organizaciones[i].id;
+         //var sentencia = db.query("Insert into usuarios_organizaciones values(?,?)",[Usuario.alias, id_organizacion],callback);
+         console.log(organizaciones[i].id);
+    }
+
+    return sentencia;
   },
 
   deleteUsuario:function(alias,callback)
@@ -26,6 +37,12 @@ var Usuario=
   {
     return db.query("select * from usuarios where alias=? and contrasena=?",[Usuario.alias, Usuario.contrasena],callback);
   },
+
+  addUsuarioAOrganizacion:function(Usuario,callback)
+  {
+    db.query("Insert into usuarios_organizaciones values(?,?)",[Usuario.alias, Usuario.id_organizacion],callback);
+  }
+
 };
 
 module.exports=Usuario;

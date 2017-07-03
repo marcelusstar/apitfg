@@ -78,6 +78,21 @@ router.post('/login',function(req,res,next)
 			res.json(count);
 		}
 	});
- });
+});
+
+router.post('/organizacion',function(req,res,next)
+{
+	Usuario.addUsuarioAOrganizacion(req.body,function(err,count)
+	{
+	  if(err)
+	  {
+	  	res.json(err);
+	  }
+		else
+		{
+			res.json(count);
+		}
+	});
+});
 
 module.exports=router;
