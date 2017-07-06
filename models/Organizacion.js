@@ -14,12 +14,12 @@ var Organizacion=
 
   getAllUsuariosById:function(Id,callback)
   {
-    return db.query("select * from usuarios_organizaciones where organizaciones_id=?",[Id],callback);
+    return db.query("select * from usuarios_organizaciones where Organizacion_id=?",[Id],callback);
   },
 
-  addOrganizacion:function(Organizacion,callback)
+  addOrganizacion:function(Nombre,callback)
   {
-    return db.query("Insert into organizaciones values(?, ?)",[Organizacion.id, Organizacion.nombre],callback);
+    return db.query("Insert into organizaciones (nombre) values(?, ?)",[Nombre],callback);
   },
 
   deleteOrganizacion:function(id,callback)

@@ -14,12 +14,13 @@ var Proyecto =
 
   getAllProyectosUsuario:function(usuario_alias,callback)
   {
-    return db.query("select * from proyectos where usuario_alias=?",[usuario_alias],callback);
+    return db.query("select * from proyectos where Usuario_alias_autor=?",[usuario_alias],callback);
   },
 
   addProyecto:function(Proyecto,callback)
   {
-    return db.query("Insert into proyectos (nombre,descripcion,usuario_alias) values(?,?,?)",[Proyecto.nombre, Proyecto.descripcion, Proyecto.usuario_alias],callback);
+    return db.query("Insert into proyectos (nombre, descripcion, anonimato, fecha_inicio, fecha_fin, Usuario_alias_autor) values(?,?,?,?,?,?)",
+              [Proyecto.nombre, Proyecto.descripcion, Proyecto.anonimato, Proyecto.fecha_inicio, Proyecto.fecha_fin, Proyecto.Usuario_alias_autor],callback);
   },
 
   deleteProyecto:function(Id,callback)

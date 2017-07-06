@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var usuarios = require('./routes/usuarios');
 var organizaciones = require('./routes/organizaciones');
 var proyectos = require('./routes/proyectos');
+var ideas = require('./routes/ideas');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/users', users);
 app.use('/usuarios', usuarios);
 app.use('/organizaciones', organizaciones);
 app.use('/proyectos', proyectos);
+app.use('/ideas', ideas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

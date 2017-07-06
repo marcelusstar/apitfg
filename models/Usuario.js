@@ -14,18 +14,7 @@ var Usuario=
 
   addUsuario:function(Usuario,callback)
   {
-    var sentencia = db.query("Insert into usuarios values(?,?,?,?)",[Usuario.alias, Usuario.nombre, Usuario.apellidos, Usuario.contrasena],callback);
-
-    var organizaciones = Usuario.organizaciones;
-
-    for(var i in organizaciones)
-    {
-         //var id_organizacion = organizaciones[i].id;
-         //var sentencia = db.query("Insert into usuarios_organizaciones values(?,?)",[Usuario.alias, id_organizacion],callback);
-         console.log(organizaciones[i].id);
-    }
-
-    return sentencia;
+    return db.query("Insert into usuarios values(?,?,?,?)",[Usuario.alias, Usuario.nombre, Usuario.apellidos, Usuario.contrasena],callback);
   },
 
   deleteUsuario:function(alias,callback)
