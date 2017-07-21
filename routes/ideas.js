@@ -123,6 +123,23 @@ router.get('/maximo_nivel_idea_origen/:id_idea_origen', function(req, res)
 
 // -----------------------------------------------------------------------------
 
+router.get('/maximo_nivel_proyecto/:id_proyecto', function(req, res)
+{
+	Idea.getMaxNivelProyecto(req.params.id_proyecto,function(err,rows)
+  {
+    if(err)
+    {
+      res.json(err);
+    }
+    else
+    {
+      res.json(rows);
+    }
+  })
+});
+
+// -----------------------------------------------------------------------------
+
 router.post('/',function(req,res,next)
 {
 	Idea.addIdea(req.body,function(err,count)

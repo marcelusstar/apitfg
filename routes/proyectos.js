@@ -33,6 +33,21 @@ router.get('/:id', function(req, res)
   })
 });
 
+router.get('/autor_usuario/:alias', function(req, res)
+{
+	Proyecto.getAllProyectosAutorUsuario(req.params.alias,function(err,rows)
+  {
+    if(err)
+    {
+      res.json(err);
+    }
+    else
+    {
+      res.json(rows);
+    }
+  })
+});
+
 router.get('/usuario/:alias', function(req, res)
 {
 	Proyecto.getAllProyectosUsuario(req.params.alias,function(err,rows)

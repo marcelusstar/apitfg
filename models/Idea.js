@@ -39,10 +39,15 @@ var Idea =
     return db.query("select max(nivel) from ideas where Idea_id_origen = ?", [id_idea_origen], callback);
   },
 
+  getMaxNivelProyecto:function(id_proyecto, callback)
+  {
+    return db.query("select max(nivel) as max_nivel from ideas where Proyecto_id = ?", [id_proyecto], callback);
+  },
+
   addIdea:function(Idea, callback)
   {
-    return db.query("Insert into ideas (descripcion, votos, nivel, Idea_id_madre, Proyecto_id, Usuario_alias_autor) values(?, ?, ?, ?, ?, ?)",
-              [Idea.descripcion, 0, Idea.nivel, Idea.Idea_id_madre, Idea.Proyecto_id, Idea.Usuario_alias_autor],callback);
+    return db.query("Insert into ideas (descripcion, votos, nivel, Idea_id_madre, Idea_id_origen, Proyecto_id, Usuario_alias_autor) values(?, ?, ?, ?, ?, ?, ?)",
+              [Idea.descripcion, 0, Idea.nivel, Idea.Idea_id_madre, Idea.Idea_id_origen, Idea.Proyecto_id, Idea.Usuario_alias_autor],callback);
   },
 
   deleteIdea:function(id, callback)

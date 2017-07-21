@@ -9,12 +9,17 @@ var Proyecto =
 
   getProyectoById:function(Id,callback)
   {
-    return db.query("select * from proyectos where id=?",[Id],callback);
+    return db.query("select * from proyectos where id = ?",[Id],callback);
+  },
+
+  getAllProyectosAutorUsuario:function(usuario_alias,callback)
+  {
+    return db.query("select * from proyectos where Usuario_alias_autor = ?",[usuario_alias],callback);
   },
 
   getAllProyectosUsuario:function(usuario_alias,callback)
   {
-    return db.query("select * from proyectos where Usuario_alias_autor=?",[usuario_alias],callback);
+    return db.query("select * from proyectos where id IN (SELECT Proyecto_id FROM proyecto_usuarios WHERE Usuario_alias = ?)",[usuario_alias],callback);
   },
 
   addProyecto:function(Proyecto,callback)
