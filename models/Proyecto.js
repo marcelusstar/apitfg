@@ -31,6 +31,11 @@ var Proyecto =
   deleteProyecto:function(Id,callback)
   {
     return db.query("delete from proyectos where id=?",[Id],callback);
+  },
+
+  getUltimoProyecto:function(callback)
+  {
+    return db.query("select max(id) as max_id from proyectos",callback);
   }
 }
 

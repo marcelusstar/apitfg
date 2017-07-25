@@ -18,6 +18,21 @@ router.get('/', function(req, res)
   })
 });
 
+router.get('/ultimo/proyecto', function(req, res)
+{
+	Proyecto.getUltimoProyecto(function(err,rows)
+  {
+    if(err)
+    {
+      res.json(err);
+    }
+    else
+    {
+      res.json(rows);
+    }
+  })
+});
+
 router.get('/:id', function(req, res)
 {
 	Proyecto.getProyectoById(req.params.id,function(err,rows)

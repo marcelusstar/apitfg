@@ -30,6 +30,11 @@ var Usuario=
   addUsuarioAOrganizacion:function(Usuario,callback)
   {
     db.query("Insert into usuarios_organizaciones values(?,?)",[Usuario.alias, Usuario.id_organizacion],callback);
+  },
+
+  addUsuarioAProyecto:function(Usuario,callback)
+  {
+    db.query("Insert into proyecto_usuarios values(?,?)",[Usuario.Proyecto_id, Usuario.Usuario_alias],callback);
   }
 
 };

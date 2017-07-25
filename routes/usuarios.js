@@ -95,4 +95,19 @@ router.post('/organizacion',function(req,res,next)
 	});
 });
 
+router.post('/proyecto',function(req,res,next)
+{
+	Usuario.addUsuarioAProyecto(req.body,function(err,count)
+	{
+	  if(err)
+	  {
+	  	res.json(err);
+	  }
+		else
+		{
+			res.json(count);
+		}
+	});
+});
+
 module.exports=router;
